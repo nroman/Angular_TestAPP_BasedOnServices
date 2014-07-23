@@ -1,13 +1,13 @@
 angular.module('angularJS.services', [])
-    .service('globalService', function($http){        
-        var getRedditImages = function(){
-            return $http.get("http://www.reddit.com/r/pics/.json")
+    .service('redditSvc', function($http, REDDIT_WATCHER){        
+        var getRedditObjects = function(){
+            return $http.get(REDDIT_WATCHER.topPicsPath)
              .then(function(response){
                         return response.data.data.children;
                     });
         };
         
         return{
-            getImages: getRedditImages
+            getRedditObjects: getRedditObjects
         };
     });
